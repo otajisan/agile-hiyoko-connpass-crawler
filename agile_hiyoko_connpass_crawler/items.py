@@ -7,6 +7,7 @@ import scrapy
 
 
 class AgileHiyokoConnpassCrawlerItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    event_id = scrapy.Field()
+    name = scrapy.Field()
+    url = scrapy.Field()
+    csv_url = scrapy.Field()

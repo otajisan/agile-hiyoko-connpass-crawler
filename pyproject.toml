@@ -7,6 +7,10 @@ authors = ["otajisan <mtaji@morningcode.io>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 Scrapy = "^2.6.1"
+bs4 = "^0.0.1"
+loginform = "^1.2.0"
+scrapy-splash = "^0.8.0"
+selenium = "^4.1.3"
 
 [tool.poetry.dev-dependencies]
 
