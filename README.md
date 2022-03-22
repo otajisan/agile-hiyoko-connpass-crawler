@@ -123,6 +123,15 @@ total 808
 # How to debug?
 
 - for example, in the case of developing by [PyCharm](https://www.jetbrains.com/ja-jp/pycharm/), set the following
+![image](https://user-images.githubusercontent.com/5608492/159426581-d5f0dcf5-7c40-4e23-976d-89780fa122c5.png)
+
+| Configuration Name     | Explanation                    | Example                                                                          |
+|------------------------|--------------------------------|----------------------------------------------------------------------------------|
+|Script path:            | your `scrapy` binary path      | `/Users/otajisan/PycharmProjects/agile-hiyoko-connpass-crawler/.venv/bin/scrapy` |
+|Parameters:             | crawl <spider name>            | `crawl connpass`                                                                 |
+|Python interpreter:     | virtualenv python runtime path | `/Users/otajisan/PycharmProjects/agile-hiyoko-connpass-crawler/.venv/bin/python` |
+|Working directory:      | your working directory         | `/Users/otajisan/PycharmProjects/agile-hiyoko-connpass-crawler`                  |
+|Run with Python Console |                                | checked                                                                          |
 
 
 # How to add new spider?
