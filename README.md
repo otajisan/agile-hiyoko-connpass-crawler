@@ -55,12 +55,19 @@ poetry add scrapy
 poetry run scrapy startproject agile_hiyoko_connpass_crawler .
 ```
 
-# How to develop?
+# How to start developing?
 
 ```bash
 pipenv install
 pipenv shell
 poetry install
+brew install chromedriver
+```
+
+# How to debug?
+
+```bash
+poetry run scrapy crawl connpass
 ```
 
 # How to add new spider?
