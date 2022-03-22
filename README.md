@@ -1,6 +1,13 @@
 # agile-hiyoko-connpass-crawler
 Agile hiyoko club connpass event page crawler
 
+# Python Runtime Version
+
+```bash
+❱❱❱ python -V
+Python 3.9.9
+```
+
 # Project making
 
 - Create a virtual environment with [Pipenv]((https://pipenv.pypa.io/en/latest/)) so that you can use [Poetry](https://cocoatomo.github.io/poetry-ja/).
