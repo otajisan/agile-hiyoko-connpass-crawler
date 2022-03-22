@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "agile-hiyoko-connpass-crawler"
+version = "0.1.0"
+description = "Agile hiyoko club connpass event page crawler"
+authors = ["otajisan <mtaji@morningcode.io>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Scrapy = "^2.6.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
