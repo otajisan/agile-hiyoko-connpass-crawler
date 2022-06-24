@@ -6,6 +6,7 @@ import scrapy
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 
 from agile_hiyoko_connpass_crawler.items import AgileHiyokoConnpassCrawlerItem
 
@@ -29,9 +30,13 @@ class ConnpassSpider(scrapy.Spider):
         prefs = {
             'download.default_directory': download_path,
         }
-        options.add_experimental_option("prefs", prefs)
-        driver_file = '/usr/local/bin/chromedriver'
-        self.driver = webdriver.Chrome(driver_file, options=options)
+        options.add_experimental_option('prefs', prefs)
+        options.add_argument('--headless')
+        self.driver = webdriver.Chrome(
+            ChromeDriverManager().install(),
+            options=options
+        )
+        self.driver.get('https://google.com')
 
     def start_requests(self):
         self.login_by_selenium()
