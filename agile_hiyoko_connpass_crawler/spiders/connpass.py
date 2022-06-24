@@ -32,15 +32,17 @@ class ConnpassSpider(scrapy.Spider):
         }
         options.add_experimental_option('prefs', prefs)
         options.add_argument('--headless')
+        # by secret mode
+        options.add_argument('--incognito')
         self.driver = webdriver.Chrome(
             ChromeDriverManager().install(),
             options=options
         )
-        self.driver.get('https://google.com')
 
     def start_requests(self):
         self.login_by_selenium()
-        for page in range(1, 5):
+        last_page_num = self.get_last_page()
+        for page in range(1, last_page_num + 1):
             yield scrapy.Request(
                 f'https://agile-hiyoko-club.connpass.com/event/?page={page}',
                 callback=self.parse_event_list
@@ -51,9 +53,19 @@ class ConnpassSpider(scrapy.Spider):
         self.driver.find_element(by=By.NAME, value='username').send_keys(self.login_user)
         self.driver.find_element(by=By.NAME, value='password').send_keys(self.login_password)
         time.sleep(3)
-        submit_btn = self.driver.find_element(by=By.XPATH, value='//*[@id="login_form"]/p[5]/button')
+        submit_btn = self.driver.find_element(by=By.XPATH,
+                                              value='//*[@id="login_form"]/p[5]/button')
         submit_btn.click()
         time.sleep(3)
+
+    def get_last_page(self):
+        # NOTE: page 0 -> jump last page
+        self.driver.get('https://agile-hiyoko-club.connpass.com/event/?page=0')
+        last_page_html = self.driver.page_source
+        soup = BeautifulSoup(last_page_html, 'html.parser')
+        last_page = soup.find('div', class_='paging_area').find('li', class_='active').find('span')
+
+        return int(last_page.text)
 
     def parse_event_list(self, response):
         soup = BeautifulSoup(response.body, "html.parser")
